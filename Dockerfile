@@ -64,7 +64,7 @@ RUN mkdir -p ${G2OPY_PATH} && \
     cd ${G2OPY_PATH} && \
     mkdir build && \
     cd build && \
-    cmake -D PYBIND11_PYTHON_VERSION=3.8 ..  && \
+    cmake -D PYBIND11_PYTHON_VERSION=3.8 -D ARCH=${ARCH} ..  && \
     make -j${NCPUS} && \
     cd .. && \
     python3 setup.py install
