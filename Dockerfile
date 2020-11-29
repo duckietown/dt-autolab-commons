@@ -54,6 +54,21 @@ RUN dt-apt-install ${REPO_PATH}/dependencies-apt.txt
 COPY ./dependencies-py3.txt "${REPO_PATH}/"
 RUN pip3 install --use-feature=2020-resolver -r ${REPO_PATH}/dependencies-py3.txt
 
+# build g2opy
+ARG G2OPY_PATH=/usr/local/lib/g2opy
+ARG G2OPY_GIT_REPOSITORY_URL=https://github.com/duckietown/g2opy
+ARG NCPUS=2
+
+RUN mkdir -p ${G2OPY_PATH} && \
+    git clone --recurse-submodule ${G2OPY_GIT_REPOSITORY_URL} ${G2OPY_PATH} && \
+    cd ${G2OPY_PATH} && \
+    mkdir build && \
+    cd build && \
+    cmake -D PYBIND11_PYTHON_VERSION=3.8 ..  && \
+    make -j${NCPUS} && \
+    cd .. && \
+    python3 setup.py install
+
 # copy the source code
 COPY ./packages "${REPO_PATH}/packages"
 

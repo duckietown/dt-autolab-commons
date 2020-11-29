@@ -1,1 +1,5 @@
 # LIST YOUR APT PACKAGES HERE
+
+# these are for g2o
+libsuitesparse-dev
+libeigen3-dev
