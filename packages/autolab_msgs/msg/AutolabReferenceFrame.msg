@@ -1,14 +1,16 @@
 # Reference Frame Type
 # Ranges are split this way:
-#   reserved:   1-20
-#   watchtower: 20-29
-#   duckiebot:  30-39
+#   reserved:   1-9
+#   duckietown: 10-29
+#   watchtower: 30-39
+#   duckiebot:  40-49
 uint8 ENTITY_TYPE_UNKNOWN = 0
 uint8 ENTITY_TYPE_WORLD = 1
-uint8 ENTITY_TYPE_GROUND_TAG = 2
-uint8 ENTITY_TYPE_WATCHTOWER_CAMERA = 20
-uint8 ENTITY_TYPE_DUCKIEBOT_FOOTPRINT = 30
-uint8 ENTITY_TYPE_DUCKIEBOT_TAG = 31
+uint8 ENTITY_TYPE_MAP_ORIGIN = 10
+uint8 ENTITY_TYPE_GROUND_TAG = 11
+uint8 ENTITY_TYPE_WATCHTOWER_CAMERA = 30
+uint8 ENTITY_TYPE_DUCKIEBOT_FOOTPRINT = 40
+uint8 ENTITY_TYPE_DUCKIEBOT_TAG = 41
 
 time     time
 uint8    type
