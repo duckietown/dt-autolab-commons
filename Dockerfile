@@ -59,6 +59,7 @@ ARG G2OPY_PATH=/usr/local/lib/g2opy
 ARG G2OPY_GIT_REPOSITORY_URL=https://github.com/duckietown/g2opy
 ARG NCPUS=2
 
+# TODO: try to make clean after install
 RUN mkdir -p ${G2OPY_PATH} && \
     git clone --recurse-submodule ${G2OPY_GIT_REPOSITORY_URL} ${G2OPY_PATH} && \
     cd ${G2OPY_PATH} && \
@@ -97,3 +98,7 @@ LABEL org.duckietown.label.module.type="${REPO_NAME}" \
     org.duckietown.label.maintainer="${MAINTAINER}"
 # <== Do not change the code above this line
 # <==================================================
+
+# configure entrypoint
+COPY assets/autolab_entrypoint.sh /autolab_entrypoint.sh
+ENTRYPOINT ["/autolab_entrypoint.sh"]
