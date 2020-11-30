@@ -59,7 +59,6 @@ ARG G2OPY_PATH=/usr/local/lib/g2opy
 ARG G2OPY_GIT_REPOSITORY_URL=https://github.com/duckietown/g2opy
 ARG NCPUS=2
 
-# TODO: try to make clean after install
 RUN mkdir -p ${G2OPY_PATH} && \
     git clone --recurse-submodule ${G2OPY_GIT_REPOSITORY_URL} ${G2OPY_PATH} && \
     cd ${G2OPY_PATH} && \
@@ -68,7 +67,9 @@ RUN mkdir -p ${G2OPY_PATH} && \
     cmake -D PYBIND11_PYTHON_VERSION=3.8 -D ARCH=${ARCH} ..  && \
     make -j${NCPUS} && \
     cd .. && \
-    python3 setup.py install
+    python3 setup.py install && \
+    cd / && \
+    rm -rf ${G2OPY_PATH}
 
 # copy the source code
 COPY ./packages "${REPO_PATH}/packages"
