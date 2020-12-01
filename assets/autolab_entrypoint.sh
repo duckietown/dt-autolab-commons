@@ -5,7 +5,7 @@ source /entrypoint.sh
 
 # constants
 CONFIG_DIR=/data/config/autolab
-TAG_ID_FILE=${CONFIG_DIR}/tag_id
+ROBOT_TAG_ID_FILE=${CONFIG_DIR}/tag_id
 MAP_NAME_FILE=${CONFIG_DIR}/map_name
 
 echo "==> Autolab Entrypoint"
@@ -21,22 +21,22 @@ debug(){
 
 configure_autolab(){
   # tag_id
-  if [ ${#TAG_ID} -le 0 ]; then
-      if [ -f "${TAG_ID_FILE}" ]; then
-          TAG_ID=$(cat "${TAG_ID_FILE}")
-          if [[ "${TAG_ID}" -le 0 ]]; then
-              echo "WARNING: tag_id file has an invalid value, '${TAG_ID}'."
-              export TAG_ID="__NOTSET__"
+  if [ ${#ROBOT_TAG_ID} -le 0 ]; then
+      if [ -f "${ROBOT_TAG_ID_FILE}" ]; then
+          ROBOT_TAG_ID=$(cat "${ROBOT_TAG_ID_FILE}")
+          if [[ "${ROBOT_TAG_ID}" -le 0 ]]; then
+              echo "WARNING: tag_id file has an invalid value, '${ROBOT_TAG_ID}'."
+              export ROBOT_TAG_ID="__NOTSET__"
           else
-              debug "TAG_ID[${TAG_ID_FILE}]: '${TAG_ID}'"
-              export TAG_ID
+              debug "ROBOT_TAG_ID[${ROBOT_TAG_ID_FILE}]: '${ROBOT_TAG_ID}'"
+              export ROBOT_TAG_ID
           fi
       else
           echo "WARNING: tag_id file does not exist."
-          export TAG_ID="__NOTSET__"
+          export ROBOT_TAG_ID="__NOTSET__"
       fi
   else
-      echo "INFO: TAG_ID is externally set to '${TAG_ID}'."
+      echo "INFO: ROBOT_TAG_ID is externally set to '${ROBOT_TAG_ID}'."
   fi
 
   # map_name
