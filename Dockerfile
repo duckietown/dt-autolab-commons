@@ -59,7 +59,7 @@ RUN dt-apt-install ${REPO_PATH}/dependencies-apt.txt
 ARG PIP_INDEX_URL="https://pypi.org/simple"
 ENV PIP_INDEX_URL=${PIP_INDEX_URL}
 COPY ./dependencies-py3.* "${REPO_PATH}/"
-RUN python3 -m pip install -r ${REPO_PATH}/dependencies-py3.txt
+RUN dt-pip3-install "${REPO_PATH}/dependencies-py3.*"
 
 # build g2opy
 ARG G2OPY_PATH=/usr/local/lib/g2opy
