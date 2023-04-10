@@ -12,7 +12,7 @@ bool                        is_static
 geometry_msgs/Transform     transform
 
 
-# NOTE: when one of `is_static` and `is_fixed` is set to `True`, the value of the field
+# NOTE: when one of `is_static` or `is_fixed` is set to `True`, the value of the field
 #       `time` in both `origin` and `target` above should:
 #           - not be set by publishers;
 #           - ignored by subscribers;
