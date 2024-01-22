@@ -1,0 +1,8 @@
+name: "dt-autolab-commons"
+maintainer:
+    name: "Andrea F. Daniele"
+    email: "afdaniele@duckietown.com"
+description: "Common image for the Duckietown Autolab modules"
+version: 0.0.1
+# pick an icon from: https://fontawesome.com/v4.7.0/icons/
+icon: square
